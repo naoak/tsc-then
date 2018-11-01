@@ -44,7 +44,7 @@ const command = process.argv.slice(separatorIndex + 1);
 
 const initialCompilationPromises: Promise<void>[] = [];
 for (const projectDir of projectDirs) {
-  const options = { shell: true, cwd: process.cwd(), hideWindows: true };
+  const options = { shell: true, cwd: process.cwd(), hideWindows: true, customFds: [0,1,2] };
   const tscArgs = ['-w'];
   if (projectDir !== '') {
     tscArgs.push('-p', projectDir);
